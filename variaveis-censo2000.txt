@@ -1,0 +1,75 @@
+CENSO 2000
+
+P001  - Peso Amostral
+V0103 - Município
+AREAP -	ÁREA DE PONDERAÇÃO
+V7616 - Rendimento mensal domiciliar
+V7100 - Moradores, número
+
+D12
+V0447 - Posição na ocupação é a relação de trabalho existente entre a pessoa e o empreendimento em que trabalhava
+V0450 - Era contribuinte de instituto de previdenciária oficial
+V4752 - Idade calculada em anos:
+
+D13
+V4603 - Rendimento renda mínima, bolsa escola, seguro desemprego
+
+D14 (Problemas)
+V0439 - Na semana de 23 a 29/7/2000 trabalhou remunerado
+V0440 - Na semana, tinha trabalho mas estava afastado
+V0441 - Na semana, ajudou sem remuneração, no trabalho exercido por pessoa moradora do domicílio, ou como aprendiz ou estagiário
+V0442 - Na semana, ajudou sem remuneração, no trabalho exercido por pessoa moradora do domicílio em atividade de cultivo, extração vegetal...
+V0443 - Na semana, trabalhou no cultivo, etc... para alimentação de pessoas moradoras no domicílio
+
+V0456 - Em julho de 2000, era aposentado de instituto de previdência oficial
+V0410 - Problema mental permanente
+V0411 - Capacidade de enxergar
+V0412 - Capacidade de ouvir
+V0413 - Capacidade de caminhar/subir escadas
+V0414 - Deficiências(Tipo de deficiência física).
+
+-------------------------------------------------------
+
+D21 - V0215 - Geladeira ou freezer, existência
+D22 - V0217 - Máquina de lavar roupa, existência
+D23 - V0221 - Televisores, número
+D24 - V0220 - Microcomputador, existência
+D25 - V0219 - Linha telefônica instalada, existência
+
+-------------------------------------------------------
+
+D31 - V0207 - Abastecimento de água, origem
+D32 - V0213 - Iluminação elétrica, existência
+D33 - V0209 - Banheiros, número
+D34 - V0211 - Esgotamento sanitário, forma
+D35 - V0212 - Lixo, destino
+D36 - V7204 - Densidade morador/dormitório
+
+-------------------------------------------------------
+
+D41 - V0411 - Capacidade de enxergar
+    - V0412 - Capacidade de ouvir
+    - V0413 - Capacidade de caminhar/subir escadas	
+    - V0410 - Problema mental permanente
+
+D42 - V4752 - Idade calculada em anos
+
+D43 - V0401 - Sexo
+    - V0402 - Relação com responsável pelo domicílio
+    - V0436 - Vive em companhia de cônjuge ou companheiro(a)
+    - V4752 - Idade calculada em anos
+
+D44 - V4752 - Idade calculada em anos
+    - V0429 - Freqüenta escola ou creche
+    - V0439 - Na semana de 23 a 29/7/2000 trabalhou remunerado
+    - V0440 - Na semana, tinha trabalho mas estava afastado
+    - V0441 - Na semana, ajudou sem remuneração, no trabalho exercido por pessoa moradora do domicílio, ou como aprendiz ou estagiário
+    - V0442 - Na semana, ajudou sem remuneração, no trabalho exercido por pessoa moradora do domicílio em atividade de cultivo, extração vegetal...
+    - V0443 - Na semana, trabalhou no cultivo, etc... para alimentação de pessoas moradoras no domicílio
+
+-------------------------------------------------------
+D51 - V0428 - Sabe ler e escrever
+D52 - V0429 – Frequenta escola ou creche
+D53 - V4300 - Anos de estudo
+D54 - V0431 - Série que freqüenta
+    - V0432 - Curso mais elevado que freqüentou, concluindo pelo menos uma série

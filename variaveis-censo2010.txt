@@ -1,0 +1,75 @@
+Desenho amostral 
+Tatais
+# V0010 – Peso
+# V0011 – Área de ponderação
+
+Domínio de Estimação
+# V4001 – Espécie de domicílio
+# V0504 – Ordem da pessoa
+
+-----------------------------------------------------------------------------------------------
+D11 - V6531 – Rendimento domiciliar per capita, em julho de 2010 (em reais)
+
+D12 - V6036 – Idade calculada em anos
+      V6930 – Posição na ocupação e categoria do emprego no trabalho principal da semana de 25 a 31 de julho de 2010.
+      V0650 - Era contribuinte de Instituto de Previdência Oficial em algum trabalho que tinha na semana de 25 a 31 de                  julho 
+
+D13 - V0657 – Em julho de 2010, tinha rendimento mensal habitual de Programa Social Bolsa Família ou Programa de                        Erradicação do Trabalho Infantil – PETI
+      V0658 – Em julho de 2010 tinha rendimento mensal habitual de outros programas sociais ou de transferências
+
+D14 - V6036 – Idade calculada em anos
+      V6910 – Condição de ocupação na semana de 25 a 31 de julho de 2010.
+
+-----------------------------------------------------------------------------------------------
+D21 - V0216 – Geladeira, existência
+D22 - V0215 – Máquina de lavar roupa, existência
+D23 - V0214 – Televisão, existência
+D24 - V0219 – Microcomputador, existência
+
+D25 - V0217 – Telefone celular, existência
+      V0218 – Telefone fixo, existência
+
+-----------------------------------------------------------------------------------------------
+D31 - V0208 - Abastecimento de Água
+D32 - V0211 - Existência de Energia Elétrica
+D33 - V0205 - Banheiro de Uso Exclusivo
+D34 - V0207 - Rede de Esgoto
+D35 - V0210 - Destino do Lixo
+D36 - V6204 - Deficit Habitacional
+
+-----------------------------------------------------------------------------------------------
+
+D41 - V0614 - Dificuldade de Enxergar
+      V0615 - Dificuldade de Ouvir
+      V0616 - Dificuldade de Caminhar
+      V0617 - Mental/Intelectual
+
+D42 - V6036 – Idade calculada em anos
+
+D43 - V0601 - Sexo
+      V0637 - Vive em companhia de cônjuge ou companheiro(a)
+      V6660 - Idade do(a) último(a) filho(a) tido(a) nascido(a) vivo(a) até 31 de julho de 2010
+
+D44 - V6036 – Idade calculada em anos
+      V0641 - Trabalhou ganhando em dinheiro, produtos, mercadorias ou benefícios
+      V0642 - Tinha trabalho remunerado do qual estava temporariamente afastado(a)
+      V0643 - Ajudou sem qualquer pagamento no trabalho remunerado de morador do domicílio
+      V0644 - Trabalhou na plantação, criação de animais ou pesca, somente para alimentação dos moradores do domicílio 	                (Inclusive caça e extração vegetal)
+      V0654 - No período de 02 a 31 de julho de 2010, tomou alguma providência, de fato, para conseguir trabalho
+      V0628 - Frequenta escola ou creche
+
+-----------------------------------------------------------------------------------------------
+
+D51 - V6036 – Idade calculada em anos
+      V0627 – Sabe ler e escrever
+
+D52 - V6036 – Idade calculada em anos
+      V0628 - Frequenta escola ou creche
+
+D53 - V6036 – Idade calculada em anos
+      V0628 - Frequenta escola ou creche
+      V0633 - Curso mais elevado que frequentou
+
+D54 - V6036 – Idade calculada em anos
+      V0630 - Série/ano que frequenta (fundamental)
+      V0631 - Série que frequenta (Médio)
