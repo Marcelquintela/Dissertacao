@@ -1,0 +1,106 @@
+## *************************************************************************##
+# POBREZA NO NORDESTE BRASILEIRO                                             #
+# Aluno MARCEL DANTAS DE QUINTELA       Mat. 2012303131-27                   #
+# Programa: ESTIMATIVAS                                                      #
+## *************************************************************************##
+
+# ------------------- Scores de Privação  ----------------------------------
+dados.Dom <- transform(dados.Dom, SD1 = ((D11+D12+D13+D14        )*1/4*1/5),
+                                  SD2 = ((D21+D22+D23+D24+D25    )*1/5*1/5),
+                                  SD3 = ((D31+D32+D33+D34+D35+D36)*1/6*1/5),
+                                  SD4 = ((D41+D42+D43+D44        )*1/4*1/5),
+                                  SD5 = ((D51+D52+D53+D54        )*1/4*1/5))
+dados.Dom <- transform(dados.Dom, C = SD1+SD2+SD3+SD4+SD5)
+
+# --------------- Indicadoras de Domicilio em Pobreza ------------------------
+dados.Dom <- transform(dados.Dom, NPob = ifelse( C<0.20,1,0),
+                                  Vul  = ifelse((C>=0.20 & C<0.33),1,0),
+                                  Pob  = ifelse( C>=0.33,1,0),
+                                  PobG = ifelse( C>=0.50,1,0))
+
+# como o banco esta agregado por domicilio a expansao para pessoas será feita por:
+# V0401-Nº pessoas residentes no domicilio
+
+dados.Dom <- transform(dados.Dom, Pes_NPob = NPob*V0401,
+                                  Pes_Vul  = Vul *V0401,
+                                  Pes_Pob  = Pob *V0401,
+                                  Pes_PobG = PobG*V0401,
+                                  Pes_D11  = D11 *V0401,
+                                  Pes_D11a = D11a*V0401)
+
+dados.Dom <- transform(dados.Dom, SumC   = ifelse(Pob==1,C*V0401,0),
+                                  SumC.1 = ifelse(Pob==1,SD1*V0401,0),
+                                  SumC.2 = ifelse(Pob==1,SD2*V0401,0),
+                                  SumC.3 = ifelse(Pob==1,SD3*V0401,0),
+                                  SumC.4 = ifelse(Pob==1,SD4*V0401,0),
+                                  SumC.5 = ifelse(Pob==1,SD5*V0401,0))
+
+AES <- svydesign (id = ~1,
+                  strata = ~V0011,
+                  fpc = ~N_Dom.AP,
+                  weights = ~V0010,
+                  data = dados.Dom)
+
+
+#Incidencia de Nao Pobres, Pobres (H),vulneraveis e em Pobreza Grave
+# Representa a proporcao da populacao que sao multidimensionalmente pobre: H=q/n
+H <- svyby(formula     = ~Pes_Pob+Pes_NPob+Pes_Vul+Pes_PobG+Pes_D11+Pes_D11a,
+           by          = ~V0002,
+           denominator = ~V0401,
+           design      = AES, 
+           svyratio)
+rownames(H)<-NULL
+
+#Intencidade (A)
+A <- svyby(formula     = ~SumC,
+           by          = ~V0002,
+           denominator = ~Pes_Pob, # denominador numero de pobres
+           design      = AES, 
+           svyratio)
+rownames(A)<-NULL
+
+#MPI
+MPI <- svyby(formula     = ~SumC,
+             by          = ~V0002,
+             denominator = ~V0401,
+             design      = AES, 
+             svyratio)
+rownames(MPI)<-NULL
+
+#Contribuicaoo da dimensao
+C.i <- svyby(formula     = ~SumC.1+SumC.2+SumC.3+SumC.4+SumC.5,
+             by          = ~V0002,
+             denominator = ~SumC,
+             design      = AES, 
+             svyratio)
+rownames(C.i)<-NULL
+
+X <- data.frame(MPI$V0002,
+                coef(MPI)  , round(cv(MPI)*100,4)      ,
+                H[,3]*100  , c(round(cv(H)[2]*100,4))  ,
+                H[,2]*100  , c(round(cv(H)[1]*100,4))  ,
+                H[,4]*100  , c(round(cv(H)[3]*100,4))  ,
+                H[,5]*100  , c(round(cv(H)[4]*100,4))  ,
+                H[,6]*100  , c(round(cv(H)[5]*100,4))  ,
+                H[,7]*100  , c(round(cv(H)[6]*100,4))  ,
+                coef(A)*100, round(cv(A)*100,4)        ,
+                C.i[,2]*100, c(round(cv(C.i)[2]*100,4)),
+                C.i[,3]*100, c(round(cv(C.i)[1]*100,4)),
+                C.i[,4]*100, c(round(cv(C.i)[3]*100,4)),
+                C.i[,5]*100, c(round(cv(C.i)[4]*100,4)),
+                C.i[,6]*100, c(round(cv(C.i)[5]*100,4)))
+
+names(X) <- c("V0002",
+              "MPI"       ,"CV.MPI",
+              "NaoPobres (%)","CV.NaoPobre (%)",
+              "Pobres (%)","CV.Pobre (%)",
+              "Vulneraveis (%)","CV.Vulneraveis (%)",
+              "Pobres Graves (%)","CV.Pobre Graves (%)",
+              "Pobre LP-MDS(%)","CV.Pobre LP-MDS(%)",
+              "Pobre LP-2PPC(%)","CV.Pobre LP-2ppc(%)",
+              "Intensidade.Priva(%)","CV.Intensidade(%)",
+              "Contrib.D_1 (%)","CV.D_1 (%)",
+              "Contrib.D_2 (%)","CV.D_2 (%)",
+              "Contrib.D_3 (%)","CV.D_3 (%)",
+              "Contrib.D_4 (%)","CV.D_4 (%)",
+              "Contrib.D_5 (%)","CV.D_5 (%)")
